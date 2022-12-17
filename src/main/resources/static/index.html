@@ -51,6 +51,9 @@
             <td>{{item.productTitle}}</td>
             <td>{{item.quantity}}</td>
             <td>{{item.pricePerProduct + ' x ' + item.quantity + ' = ' + item.price}}</td>
+            <td>
+                <button type="button" class="btn btn-danger" ng-click="removeFromCart(item.productId)">Убрать из корзины</button>
+            </td>
         </tr>
         <tr>
             <td>Итого</td>
@@ -59,6 +62,7 @@
         </tr>
         </tbody>
     </table>
+    <button type="button" class="btn btn-secondary" ng-click="clearCart()">Очистить корзину</button>
 </div>
 </body>
 </html>

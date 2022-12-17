@@ -23,4 +23,18 @@ public class CartController {
     public Cart getCurrentCart() {
         return cartService.getCurrentCart();
     }
+
+    @GetMapping("/clear")
+    public void clearCart() {
+        cartService.clear();
+    }
+
+    @GetMapping("/remove/{id}")
+    public void removeFromCart(@PathVariable Long id) {
+        cartService.remove(id);
+    }
+
+
+
+
 }
