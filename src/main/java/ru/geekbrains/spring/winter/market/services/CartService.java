@@ -27,4 +27,15 @@ public class CartService {
         Product product = productService.findById(productId).orElseThrow(() -> new ResourceNotFoundException("Не удается добавить продукт с id: " + productId + " в корзину. Продукт не найден"));
         tempCart.add(product);
     }
+
+
+    public void remove(Long productId) {
+        tempCart.remove(productId);
+    }
+
+    public void clear() {
+        tempCart.clear();
+    }
+
+
 }

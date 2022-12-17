@@ -20,7 +20,14 @@ public class Cart {
         return Collections.unmodifiableList(items);
     }
 
-    public void add(Product product) { // TODO: Доработать в ДЗ
+    public void add(Product product) {
+        for (CartItem item : items) {
+            if (product.getId().equals(item.getProductId())) {
+                item.changeQuantity(1);
+                recalculate();
+                return;
+            }
+        }
         items.add(new CartItem(product.getId(), product.getTitle(), 1, product.getPrice(), product.getPrice()));
         recalculate();
     }
@@ -31,4 +38,18 @@ public class Cart {
             totalPrice += item.getPrice();
         }
     }
+
+    public void remove(Long productId) {
+        if (items.removeIf(item -> item.getProductId().equals(productId))) {
+            recalculate();
+        }
+    }
+
+    public void clear() {
+        items.clear();
+        totalPrice = 0;
+    }
+
+
+
 }
